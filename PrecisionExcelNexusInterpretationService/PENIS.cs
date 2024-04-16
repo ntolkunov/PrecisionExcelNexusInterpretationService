@@ -9,9 +9,10 @@ namespace PrecisionExcelNexusInterpretationService
 {
     public class PENIS
     {
-        public static string Translate(string text, string langFrom, string langTo)
+        public static string Translate(string text, string langFrom = "auto", string langTo = "auto")
         {  
-            var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl={langTo}&dt=t&q={
+            var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={
+                langFrom}&tl={langTo}&dt=t&q={
                 HttpUtility.UrlEncode(text)}";
 
             using (var client = new HttpClient())
@@ -22,9 +23,10 @@ namespace PrecisionExcelNexusInterpretationService
             }
         }
 
-        public static async Task<string> TranslateAsync(string text, string langFrom, string langTo)
+        public static async Task<string> TranslateAsync(string text, string langFrom= "auto", string langTo = "auto")
         {
-            var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl={langTo}&dt=t&q={
+            var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={
+                langFrom}&tl={langTo}&dt=t&q={
                 HttpUtility.UrlEncode(text)}";
 
             using (var client = new HttpClient())
